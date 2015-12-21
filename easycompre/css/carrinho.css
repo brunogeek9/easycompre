@@ -1,0 +1,44 @@
+.carrinho{
+	margin-left:auto;
+	margin-right:auto;
+	border:1px solid;
+	border-color:gray;
+	width:800px;
+}
+.operacao{
+	font-size:20px;
+	
+}
+thead,caption{
+	background-color:#FF5500;
+	color:white;	
+	font-size:20px;
+	font-family:'Oswald';
+}
+caption{
+	color:white;
+}
+#remove{
+	font-size:20px;
+}
+table{
+	border-radius:3px;
+}
+
+th {
+    text-align: center;
+}
+#frete{
+	margin-left:auto;
+	margin-right:auto;
+
+}
+#subtrai{
+	
+}
+#soma{
+	
+}
+#remove{
+	backgrund-image:url(icones/remover.png)
+}

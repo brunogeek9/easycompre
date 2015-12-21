@@ -1,0 +1,44 @@
+//produtos mais vendidos
+"SELECT * FROM pedido_produto,produto where true order by quantidade DESC"
+
+//produtos mais buscados
+"SELECT * 
+FROM produto
+WHERE TRUE GROUP BY contador DESC 
+LIMIT 5"
+
+//SubcategoriaMaisBuscada
+"SELECT subcategoria.nome, SUM( produto.contador ) AS soma
+FROM subcategoria, produto
+WHERE subcategoria.id_subcategoria = produto.id_subcategoria
+GROUP BY nome
+ORDER BY soma DESC
+LIMIT 5"
+
+//SubcategoriaMaisVendida
+"SELECT subcategoria.nome,SUM(pedido_produto.quantidade) AS quantidade
+FROM subcategoria, produto ,pedido_produto
+WHERE subcategoria.id_subcategoria = produto.id_subcategoria AND 
+pedido_produto.id_produto=produto.id_produto 
+GROUP BY subcategoria.nome
+ORDER BY quantidade DESC
+LIMIT 5"
+
+//CategoriaMaisBuscada
+"SELECT categoria.nome, SUM( produto.contador ) AS soma
+FROM categoria, produto, subcategoria
+WHERE categoria.id_categoria = subcategoria.id_categoria
+AND subcategoria.id_subcategoria = produto.id_subcategoria
+GROUP BY nome 
+ORDER BY soma DESC 
+LIMIT 5"
+
+//CategoriaMaisVendida
+"SELECT categoria.nome, SUM(pedido_produto.quantidade) AS quantidade
+FROM categoria, produto ,pedido_produto,subcategoria
+WHERE categoria.id_categoria = subcategoria.id_categoria
+AND subcategoria.id_subcategoria = produto.id_subcategoria
+AND pedido_produto.id_produto=produto.id_produto 
+GROUP BY categoria.nome 
+ORDER BY quantidade DESC
+LIMIT 5"

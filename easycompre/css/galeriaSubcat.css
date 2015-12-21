@@ -1,0 +1,15 @@
+.preco {
+	float:center;
+}
+.galeriaSubcat{
+	width:450;
+	height:500;
+}
+#viewS{
+	
+	overflow:hidden;
+    border=1;
+}
+#imagesSub{
+	width: none;
+}
