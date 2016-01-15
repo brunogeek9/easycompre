@@ -37,7 +37,7 @@
 							echo '<a target="_blank" class="jq-ss-link">'; 
 							echo '<p class="preco"> R$' . number_format($m[$i]['preco'], 2, ',', '.'). '</p>';
 							echo '<img src="miniaturas/'.$m[$i]['id_produto'].'" class="imgMiniatura"/>';
-							echo '<a class="nome" href="submitProd.php?acao=telaProd&id='.$m[$i]['id_produto'].'&nome='.$m[$i]['nome'].'">' .$m[$i]['nome']. '</a>';
+							echo '<a class="nome" href="paginas.php?acao=telaProd&id='.$m[$i]['id_produto'].'&nome='.$m[$i]['nome'].'">' .$m[$i]['nome']. '</a>';
 							echo '</a>';
 							echo '</div>';
 							echo '</li>';
@@ -64,7 +64,7 @@
 			echo '<img src="produtos/'.$k['id_produto'].'" id="imgProduto"/>';
 			echo '<p id="nomeTela">' . $k['nome'] . '</p>';
 			echo '<p id="precoTela"> R$' . number_format($k['preco'], 2, ',', '.') . '</p>';
-			echo '<a class="a" id="compTela" href="submitProd.php?acao=add&id='.$k['id_produto'].'">Comprar</a>';
+			echo '<a class="a" id="compTela" href="paginas.php?acao=add&id='.$k['id_produto'].'">Comprar</a>';
 			echo '<p id="descricao">' . $k['descricao'] . '</p>';
 			
 			echo '<div>';
@@ -72,7 +72,7 @@
 		}
 		
 		public function GaleriaSubcat1(){
-			echo '<h6 id="titulos">Subcategorias Mais Vendidas</h6>';
+			echo '<h6 style="text-indent: 3cm; color: gray;font-size:14px; font-family: Verdana, Arial;">Subcategorias Mais Vendidas</h6>';
 			echo '<ul id="screen">';
 			echo '<li id="viewS">';
 			echo '<ul id="imagesS">';
@@ -86,12 +86,13 @@
                 $prod[$m[$i][0]]=$m[$i][1];
 			}
 			foreach ($prod as $id=>$nome){
-				echo '<h5 style="clear:both;">'.$nome.'</h5>';
+echo '<div class="subcategoriaMaisVendida">';			
+echo '<h5 style="clear:both;text-indent: 3cm; color: red;font-size:16px; font-family: Verdana, Arial;">'.$nome.'</h5>';
 				$n=$ob1->ListaProdutoSub($id);
 				$num1=count($n);
 				for($i=0;$i<$num1;$i++){
 					echo '<li id="'.$i.'">';
-					echo '<div class="jq-ss-crop" style="overflow: hidden; height: 300px; width: 212.5px;">';
+					echo '<div class="jq-ss-crop" style="overflow: hidden; height: 340px; width: 212.5px;">';
 					echo '<a target="_blank" class="jq-ss-link">'; 
 
 						echo '<br>';
@@ -99,12 +100,13 @@
 						echo '<br>';
 						echo '<img src="miniaturas/'.$n[$i]['id_produto'].'" class="imgMiniatura"/>';
 						echo '<br>';
-						echo $n[$i]['nome'];
+						//echo $n[$i]['nome'];
+						echo '<a class="nome" href="paginas.php?acao=telaProd&id='.$n[$i]['id_produto'].'&nome='.$n[$i]['nome'].'">' .$n[$i]['nome']. '</a>';
 					echo '</div>';
 					echo '</li>';
 					echo '</li>';
 				}
-			
+			echo '</div>';
 			}
 			echo '</ul>';
 			echo '</li>';
@@ -157,6 +159,9 @@
 			$cat->ListarCategoriaMaisBuscada();
 			print_r($cat->ListarCategoriaMaisVendida());
 		}
+
+		
+
 		public function menuCategorias(){
 			
 		}

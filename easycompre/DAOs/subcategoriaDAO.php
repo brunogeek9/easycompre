@@ -37,7 +37,29 @@
 				pedido_produto.id_produto=produto.id_produto
 				GROUP BY subcategoria.nome
 				ORDER BY quantidade DESC
-				LIMIT 5"
+				LIMIT 2"
+			);
+			while($li=mysqli_fetch_array($lista)){
+				$res[] = $li;
+			}
+
+			return $res;
+		}
+		
+		public function SubcategoriasDestaque(){
+			$lista = $this->con->query(
+				"SELECT subcategoria.id_subcategoria,subcategoria.nome,SUM(pedido_produto.quantidade) AS quantidade
+				FROM subcategoria, produto ,pedido_produto
+				WHERE subcategoria.id_subcategoria = produto.id_subcategoria AND
+				pedido_produto.id_produto=produto.id_produto
+				GROUP BY subcategoria.nome
+				ORDER BY quantidade DESC
+				LIMIT 4 union SELECT subcategoria.nome,subcategoria.id_subcategoria, SUM( produto.contador ) AS soma
+				FROM subcategoria, produto
+				WHERE subcategoria.id_subcategoria = produto.id_subcategoria
+				GROUP BY nome
+				ORDER BY soma DESC
+				LIMIT 4"
 			);
 			while($li=mysqli_fetch_array($lista)){
 				$res[] = $li;
@@ -46,15 +68,14 @@
 			return $res;
 		}
 
-		//lista as subcategorias de uma categoria 
+
 		public function ListarSubcategorias($id){
 			$lista = $this->con->query(
 				"SELECT subcategoria.id_subcategoria, subcategoria.nome
 				FROM subcategoria, categoria
 				WHERE subcategoria.id_categoria = categoria.id_categoria
-				AND subcategoria.id_categoria =$id"
+				AND categoria.id_categoria=$id"
 			);
-			
 			while($li=mysqli_fetch_array($lista)){
 				$res[] = $li;
 			}

@@ -4,7 +4,7 @@
 <header>
 			<div id="topo">
 				<div>
-					<img src="imagens/logo.png" id="logo">
+					<a href="index.php"><img src="imagens/logo.png" id="logo"></a>
 				</div>
 				<ul id="menu">
 					<li>Audio<br>

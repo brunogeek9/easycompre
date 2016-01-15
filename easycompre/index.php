@@ -2,22 +2,17 @@
 <html>
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-			<meta name="viewport" content="width=device-width">
+			<meta name="viewport" content="width=device-width"/>
 			<title>easyCompre</title>
-			<link rel="stylesheet" type="text/css" href="css/cadastro.css">
-			<link rel="stylesheet" type="text/css" href="css/login.css">
-
-			<meta charset="utf-8">
-			<link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+			<link rel="stylesheet" type="text/css" href="css/cadastro.css"/>
+			<link rel="stylesheet" type="text/css" href="css/login.css"/>
+			<link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'/>
 			<link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css' />
-			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-
-			<!--<link rel="stylesheet" type="text/css" href="estilo.css">-->
-
-			<meta name = "viewport" contens="width=device-width, initial-scale = 1.0">
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
+			<meta name = "viewport" contens="width=device-width, initial-scale = 1.0"/>
 				<!-- Bootstrap -->
-				<link href ="css/bootstrap.min.css" rel="stylesheet">
-				<link href="css/style1.css" rel="stylesheet">
+				<link href ="css/bootstrap.min.css" rel="stylesheet"/>
+				<link href="css/style1.css" rel="stylesheet"/>
 
 				<script src ="js/jquery.js"></script>
 				<script src="js/bootstrap.min.js"></script>
@@ -27,14 +22,11 @@
 				<link href='css/galeriaSubcat.css' type='text/css' rel='stylesheet' />
 				<script type='text/javascript' src='js/jquery.scrollTo-min.js'></script>
 				<script type='text/javascript' src='js/jquery.scrollShow-min.js'></script>
-				<?php
-					
-				?>
 	</head>
- <body>
+ 	<body>
 		<?php
-			require_once("Pedacos/menu.php");
 			include_once("Pedacos/cadastro.php");
+			require_once("Pedacos/menu.php");
 			include_once("Pedacos/login.php");
 		?>	
  		<div id="loja">
@@ -52,8 +44,8 @@
 				<?php
 					include ("Control/controladorProdutos.php");
 					$ob = new controladorProdutos;
-					$ob->GerarLista();
-					
+					$ob->GerarLista();	
+								
 				?>
 				<?php
 					include ("Control/carrinho.php");
@@ -67,27 +59,26 @@
 				<?php
 					$ob = new controladorProdutos;
 					$ob->GaleriaSubcat1();
-					$ob->GaleriaSubcat2();
-					$ob1=new controladorProdutos();
-					print_r($ob1->galeriaCat1());
+					//$ob->GaleriaSubcat2();
+					//$ob1=new controladorProdutos();
+					//print_r($ob1->galeriaCat1());
 				?>	
 					
 			</fieldset>
 			</div>
 			<div id="sobre">
 				<fieldset>
-					
-				
-					<p align="center">A sua loja de compras online ...</p>
-					
+					<p align="center">A EasyCompre foi desenvolvida para você Cliente economizar tempo e dinheiro, tornado-se a sua loja online..</p>
 			</fieldset>
 			</div>
 			<br>
 			
 		</div>
+		
 		<?php
 			require_once("Pedacos/rodape.php");
 		?>
+
 		<foot>
 			<script type="text/javascript">
 
@@ -113,3 +104,5 @@
 		</foot>
 	</body>
 </html>
+
+?>

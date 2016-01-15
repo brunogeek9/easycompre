@@ -1,29 +1,12 @@
 #loja{
-	width:1001px;
-	margin-left:auto;
-	margin-right:auto;	
-	
-}
-i{
-	color:#383838;
-}
-body{
-	width:100%;
-	background-color:white;
+	width:1000px;
+	margin:auto;	
 }
 /*pegando o campo de texto que esta dentro da div topo*/
 #topo>form{
-	float: left;
-	width: 400px;
-    }
-/*importado do google*/
-.gsc-control-cse {
-    font-family: Arial, sans-serif;
-    border-color: transparent !important;
-    background-color: transparent;
-}
-.cse .gsc-control-cse, .gsc-control-cse{
-	    background-color: transparent !important;
+    width: 200px;
+	margin-left:auto;
+	margin-right:auto;
 }
 /*seletor esta pegando a div onde a logo esta dentro*/
 #topo>div:first-child{
@@ -36,9 +19,9 @@ body{
 	height:80px;
 	width:200px;
 }
-#cad{
+#cadastro{
 	float:right;
-	margin-top:-8px;
+	margin-top:-75px;
 }
 #IMGcarinho{
 	height:50px;
@@ -46,14 +29,14 @@ body{
 	top:0px;
 }
 #IMGuser{
-	height:30px;
-	width:30px;
+	height:50px;
+	width:50px;
 }
 #propagandas{
-	height:400px;
+	height:200px;
 }
 /*pegando seletores que tem propriedades parecidas*/
-#departamentos #sobre #produtos{
+#departamentos ,#sobre,#produtos{
 	height:170px;
 }
 #menu>li{
@@ -61,7 +44,7 @@ body{
 		color:#383838;
 		border:solid;
 		border-width:thin;
-		width: 101.5px;
+		width: 100.5;
 		height: 50px;
 		text-align:center;
 		float: left;
@@ -72,12 +55,13 @@ body{
 		border-top-width:0px;
 		border-bottom-width:0px;
 		border-left-width:0px;
+
 		
 	}
 #menu{
 	width: inherit;
 	height: 57px;
-	}
+}
 li,ul{
 	list-style-type:none;
 	margin: 0px;
@@ -89,13 +73,12 @@ li{
 #contato{
 	width:350px;
 	margin:auto;
-	font-size:12px;
+	font-size:20px;
 	font-weight: bold;
-	color:#e14d4d;
+	color:FF5500;
 	border-color:black;
-	font-family:'Oswald';
+	font-family:'Oswald', sans-serif;
 	letter-spacing:2px;
-	background-color:white;
 }
 #rodape{
 	width:1001px;
@@ -109,7 +92,6 @@ li{
 	border-bottom-width:0px;
 	border-right-width:0px;
 	border-left-width:0px;
-	background-color:white;
 }
 
 #g{
@@ -150,7 +132,7 @@ li{
 }
 /*pegando o topo e o rodape*/
 header,footer{
-	width:1000px;
+	width:100%;
 	height:110;
 	border:solid;
 	border-bottom-width:2px;
@@ -158,8 +140,6 @@ header,footer{
 	border-left-width:0px;
 	border-right-width:0px;
 	border-color:gray;
-	width:100%;
-	background-color:white;
 }
 /*como so o rodape tem border-top ,fiz so essa parte pra ele*/
 footer{
@@ -168,31 +148,16 @@ footer{
 	border-left-width:0px;
 	border-right-width:0px;
 }
-header{
-	height:110px;
-}
 #topo{
 	width:1000px;
 	margin:auto;
 }
 #menu>li:hover{
-	color:#e14d4d;
+	color:#FF5500;
 	cursor: pointer;
 }
 #menu>li:hover .menuICO{
 	height: 30px;
 	width: 30px;
-	
-}
-.meus-botoes{
-	background-color: #e14d4d;
-	font-weight: bold;
-	color:black;
-}
-#titulos{
-	font-weight:bold;
-	font-family:'Oswald', sans-serif;
-	color:#e14d4d;
-	font-size:16px;
 	
 }

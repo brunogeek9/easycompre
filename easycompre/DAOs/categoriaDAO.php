@@ -35,7 +35,7 @@
 		}
 		public function ListarCategorias(){
 			$lista=$this->con->query(
-				"select nome from categoria"
+				"select nome,id_categoria from categoria"
 			);
 			while($li=mysqli_fetch_array($lista)){
 				$res[] = $li;

@@ -33,7 +33,7 @@ e <?php
 			$lista=$this->con->query("SELECT * FROM pedido_produto,produto 
 			where true 
 			order by quantidade DESC
-			limit 7");
+			limit 5");
 			while($li=mysqli_fetch_array($lista)){
 				$res[] = $li;
 			}

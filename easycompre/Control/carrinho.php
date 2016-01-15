@@ -9,6 +9,7 @@
 				$_SESSION['carrinho'] = array();
 			}
 		}
+        
 		public function AdicionarProduto($id){
 			session_start();
 			if(!isset($_SESSION['carrinho'][$id])){
@@ -70,11 +71,15 @@
                    
                         <td colspan="5">
                         <form action="index.php">
-<br>
+                            <br>
                             <button type="submit" class="btn btn-danger">Continuar Comprando</button>
 
                         </form>
+                        <form action="paginas.php?acao=FinalizarCompra" method="POST">
+                            <br>
+                            <button type="submit" class="btn btn-danger">FinalizarCompra</button>
 
+                        </form>
                         </td>
 
                 </tfoot>
@@ -101,9 +106,9 @@
 
                             echo '<tr>
                                  <td>'.$nome.'</td>
-                                 <form>
+                                 
                                  <td>
-									<form action="?acao=alterar&id='.$id_produto.'" method="POST" id = "BotaoQTD">
+									<form action="pagina.php?acao=alterar&id='.$id_produto.'" method="POST" id = "BotaoQTD">
 										<!--<input type="submit" name="decremento" value="-">-->
 <button type="submit" class="btn btn-primary operacao" id="soma">+</button>
   
@@ -114,42 +119,44 @@
                                  </td>
                                  <td>R$ '.$preco.'</td>
                                  <td>Subtotal R$ '.$this->CalcularSub($id,$qtd).'</td>
-                                 <td><a href="?acao=rm&id='.$id.'" id="remove">Remove</a></td>
+                                 <td><a href="pagina.php?acao=rm&id='.$id.'" id="remove">Remove</a></td>
 <br>
                               </tr>';
                         }
                         $total = number_format($total, 2, ',', '.');
-                        
+                        $frete=$_POST['Valor_1'];
                     }
                     //$total = number_format($total, 2, ',', '.');
+                    //print_r($_POST);
                     echo '<tr>
                             <td>Total : R$ '.$total.'</td>
-							<td colspan=4>
+							<td>Frete : R$ '.$frete.'</td>
+                            <td colspan=4>
 								
 							</td>
                           </tr>
+                          
                           <tr>
 							
                           </tr>
                           <tr>
-							<td> 
-							<form id="frete">
-							<br/>
-								<label>CEP</label>
-								<input type="text" name="f"/>
-								<input type="submit" value="CalcularFrete" name="calculaFrete">
-							</form>
-							</td>
+							<td><br>';
+echo '<label>CEP</label>';
+								echo "<form action='paginas.php?acao=frete' method='POST'>";
+                                echo '<input type="text" name="cep"/>
+								    <input type="submit" value="CalcularFrete" name="calculaFrete">
+                                    </form>';
+
+							echo '</td>
                           </tr>'
                           ;
                           
                     echo
                     '</tbody>
-                    <!--</form>-->
-                    
                     </table>
                     </body>
                     </html>';
+//print_r($_POST);
 		}
 	}
 

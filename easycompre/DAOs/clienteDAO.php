@@ -1,10 +1,8 @@
 <?php
-
-require_once 'clienteBEAN.php';
-
-class clienteDAO extends conexao
-{
-	public function consulta_cliente($objeto){
+//include_once("../beans/clienteBEAN.php");
+include_once("conexao.php");
+class clienteDAO extends conexao{
+	/*public function consulta_cliente($objeto){
 		$cpf = $objeto->get_cpf();
 		$data_nascimento = $objeto->get_data_nascimento();
 		$nome_cliente = $objeto->get_nome_cliente();
@@ -15,8 +13,8 @@ class clienteDAO extends conexao
 			" select * from cliente where email='$email' and senha='$senha' "
 		);
 
-	}
-	public function alterar_dados($objeto)
+	}*/
+/*	public function alterar_dados($objeto)
 	{
 		$cpf = $objeto->get_cpf();
 		$data_nascimento = $objeto->get_data_nascimento();
@@ -67,7 +65,7 @@ class clienteDAO extends conexao
 		if ($query) { return true; }
 	}
 
-	public function incluir_cliente($objeto)
+	public function incluir_cliente($cli)
 	{
 		$cpf = $objeto->get_cpf();
 		$data_nascimento = $objeto->get_data_nascimento();
@@ -100,7 +98,15 @@ class clienteDAO extends conexao
 		);
 
 		if ($query) { return true; }
+	}*/
+	public function inserirCliente($cpf,$data_nascimento,$email,$nome,$telefone_celular,$telefone_residencial,$senha){
+		$sql = "insert into cliente (cpf,data_nascimento,email,nome,telefone_celular,telefone_residencial,senha) 
+		      values ('$cpf','$data_nascimento','$email','$nome_cliente','$telefone_celular','$telefone_residencial','$senha')";
+	    echo "haha";
+	    $this->con->query($sql);
+	    
 	}
+	public function consultaCliente(){}
 }
 
 ?>

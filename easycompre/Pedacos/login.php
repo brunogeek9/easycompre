@@ -1,5 +1,6 @@
-	<div id="login">
 
+	<div id="login">
+		<img id="fec" src="icones/botao_fechar.png"/>
 		<form action="javascript:void(0);" method="post">
 			<br/>
 			<span class="fontawesome-user"></span><input type="text" required value="E-mail" onBlur="if(this.value=='')this.value='email'" onFocus="if(this.value=='Email')this.value='' "> <!-- JS because of IE support; better: placeholder="Username" -->
@@ -8,9 +9,9 @@
 			<br>
 			<br>
 			<p class="change_link">
-									Ainda não é membro?
-									<a href="#" class="anc" id="cadastrar">Cadastre-se</a>
-								</p>
+				Ainda não é membro?
+				<a href="#" class="anc" id="cadastrar">Cadastre-se</a>
+			</p>
 
 		</form>
 

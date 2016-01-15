@@ -1,20 +1,29 @@
 <?php
 	include_once ("controladorProdutos.php");
 	include_once ("carrinho.php");
+	include_once("lib.php");
 	class acao{
-		//$cat = new Carrinho;
-		//private $dog = $cat;
-		
-		//$this->dog;
-		
-		//$dog = new Carrinho;
-		public function Controle(){
+		public function AbrePagina(){
 		$acao=$_GET['acao'];
+
 		if(isset($_GET['acao'])){
-			$id=$_GET['id'];
+		$id=$_GET['id'];	
         if($acao == 'telaProd'){
           $ob = new controladorProdutos();
           $ob-> GerarTela($id);
+		}
+
+		if($acao == 'frete'){
+  			$cep = $_POST['cep'];
+  			$peso = 1;
+  			//echo \Metodos\PHPAlert("a");
+
+  			header('location: http://ws.correios.com.br/calculador/CalcPrecoPrazo.aspx?nCdEmpresa=&sDsSenha=&sCepOrigem=59200000&sCepDestino='.$cep.'&nVlPeso='.$peso.'&nCdFormato=1&nVlComprimento=20&nVlAltura=5&nVlLargura=15&sCdMaoPropria=n&nVlValorDeclarado=0&sCdAvisoRecebimento=n&nCdServico=41106&nVlDiametro=0&StrRetorno=http://easycompre.esy.es/paginas.php?acao=telaCar'); 
+
+		}
+		if($acao=='FinalizarCompra'){
+			//die("morrrreu");
+			include_once("pedido.php");
 		}
 		if($acao=='add'){
           $ob = new Carrinho;
@@ -41,12 +50,12 @@
 					}
 		  }
 		  elseif (isset($_POST['incremento'])) {
-					$_SESSION['carrinho'][$id] += 1;
-					$dog->TelaCarrinho();
-				}
-			}	
-	//	}
-		if($acao=='telaCar'){
+				$_SESSION['carrinho'][$id] += 1;
+				$dog->TelaCarrinho();
+			}
+		}	
+		if($acao=='telacar'){
+			
 			$dog=new Carrinho;
 			//$dog->MudaQtd();
 			$dog->TelaCarrinho();
@@ -60,4 +69,4 @@
 		}
 	}
 ?>
-	
+		

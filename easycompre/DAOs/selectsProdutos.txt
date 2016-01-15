@@ -42,3 +42,15 @@ AND pedido_produto.id_produto=produto.id_produto
 GROUP BY categoria.nome 
 ORDER BY quantidade DESC
 LIMIT 5"
+
+//SubcategoriasCategoria
+SELECT subcategoria.id_subcategoria, subcategoria.nome
+FROM subcategoria, categoria
+WHERE subcategoria.id_categoria = categoria.id_categoria
+AND categoria.id_categoria =1
+
+//union
+select categoria.nome,categoria.id_categoria from categoria union SELECT subcategoria.id_subcategoria, subcategoria.nome
+FROM subcategoria, categoria
+WHERE subcategoria.id_categoria = categoria.id_categoria
+AND categoria.id_categoria =1
