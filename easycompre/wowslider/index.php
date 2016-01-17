@@ -17,16 +17,20 @@
 	<div id="wowslider-container1">
 	<div class="ws_images"><ul>
 		<?php
-			/*$ob = new produtoDAO;
-			$list= $ob -> ListarProdutosMaisBuscados();
-			$n = count($list);*/
+			//listando os produtos mais vendidos
 			include_once ("DAOs/produtoDAO.php");
 			$ob = new produtoDAO;
 			$m= $ob -> ListarProdutosMaisVendidos();
 			$num = count($m);
 			for($i=0;$i<$num;$i++){
 				$preco= '<p class="preco"> R$' . number_format($m[$i]['preco'], 2, ',', '.'). '</p>';
-				echo '<li id="imgPrincipal"><img src="produtos/'.$m[$i]['id_produto'].'" alt="tn_10" title="R$' . number_format($m[$i]['preco'], 2, ',', '.').'<br>'.$m[$i]['nome'].'" id="wows1_'.$i.'" class="imgPrincipal"/></li>';
+				
+				echo '<li id="imgPrincipal">';
+				echo '<a href="paginas.php?acao=telaProd&id='.$m[$i]['id_produto'].'&nome='.$m[$i]['nome'].'"">';
+				echo '<img src="principal/'.$m[$i]['id_produto'].'" alt="tn_10" title="R$' . number_format($m[$i]['preco'], 2, ',', '.').'<br>'.$m[$i]['nome'].'" id="wows1_'.$i.'" class="imgPrincipal"/>';
+				echo '</a>';
+				echo '</li>';
+				
 			}
 		?>
 		<!--

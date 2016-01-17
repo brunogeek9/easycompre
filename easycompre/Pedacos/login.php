@@ -3,8 +3,8 @@
 		<img id="fec" src="icones/botao_fechar.png"/>
 		<form action="javascript:void(0);" method="post">
 			<br/>
-			<span class="fontawesome-user"></span><input type="text" required value="E-mail" onBlur="if(this.value=='')this.value='email'" onFocus="if(this.value=='Email')this.value='' "> <!-- JS because of IE support; better: placeholder="Username" -->
-			<span class="fontawesome-lock"></span><input type="password" required value="Password" onBlur="if(this.value=='')this.value='senha'" onFocus="if(this.value=='Password')this.value='' "> <!-- JS because of IE support; better: placeholder="Password" -->
+			<span class="fontawesome-user"></span><input type="text" placeholder="Email"> <!-- JS because of IE support; better: placeholder="Username" -->
+			<span class="fontawesome-lock"></span><input type="password" placeholder="*****">
 			<input type="submit" value="Conecte-se">
 			<br>
 			<br>
