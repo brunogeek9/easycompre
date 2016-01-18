@@ -58,8 +58,10 @@
 	
 	function validarData($data){
 		$dataL=limparDado($data);
+		//echo $dataL;
 		$hoje=date('Y-m-d');
-		if(count($dataL)==8){
+		if(strlen($dataL)==8){
+			
 			$dia= $dataL[0].$dataL[1];
 			$mes = $dataL[2].$dataL[3];
 			$ano= $dataL[4].$dataL[5].$dataL[6].$dataL[7];
@@ -67,13 +69,16 @@
 				$ha=$hoje[0].$hoje[1].$hoje[2].$hoje[3];
 				$hm=$hoje[5].$hoje[6];
 				$hd=$hoje[8].$hoje[9];
-				if (($ano>$ha+18)&&($mes>=$hm)&&($dia>=$hd)) {
-					return $dataL;
+				if ($ano+18<=$ha&&($mes<=$hm)&&($dia<=$hd)) {
+					return true;
 				}
+				else 
+					{return false;}
 			}
+			else {return false;}
 		}
 		else
-			return false;
+			{return false};
 	}
 
 	function validarSenha($senha,$confirmar){
