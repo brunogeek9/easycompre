@@ -78,9 +78,15 @@
 			else {return false;}
 		}
 		else
-			{return false};
+			{return false;}
 	}
-
+	function validarEmail($email){
+		if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+	 		echo "E-mail inválido.";   
+		}else{
+	 		echo "Seu e-mail e ".$email;
+		}
+	}
 	function validarSenha($senha,$confirmar){
 		if(($senha==$confirmar)&&(strlen($senha)>=8)&&(strlen($senha)<=40)&&(strlen($confirmar)>=8)&&(strlen($confirmar)<=40)){
 			return true;
