@@ -99,14 +99,25 @@ class clienteDAO extends conexao{
 
 		if ($query) { return true; }
 	}*/
-	public function inserirCliente($cpf,$data_nascimento,$email,$nome,$telefone_celular,$telefone_residencial,$senha){
-		$sql = "insert into cliente (cpf,data_nascimento,email,nome,telefone_celular,telefone_residencial,senha) 
+	public function inserirCliente($cpf,$data_nascimento,$email,$nome,$telefone_celular,$telefone_residencial,$senha,$idsexo,$idendereco){
+		$sql = "insert into cliente (cpf,data_nascimento,email,nome,telefone_celular,telefone_residencial,senha,id_sexo,id_endereco) 
 		      values ('$cpf','$data_nascimento','$email','$nome_cliente','$telefone_celular','$telefone_residencial','$senha')";
-	    echo "haha";
-	    $this->con->query($sql);
-	    
+	    //$this->con->query($sql);
+		      
+	    $sql1="INSERT INTO cliente(cpf, data_nascimento, email, nome, telefone_celular, telefone_residencial, senha, id_sexo, id_endereco) 
+	    VALUES ('$cpf','$data_nascimento','$email','$nome','$telefone_celular','$telefone_residencial','$senha',$idsexo,$idendereco)";
+		$this->con->query($sql1);
 	}
-	public function consultaCliente(){}
+	public function consultaCliente(){
+		$lista = $this->con->query(
+				"SELECT * FROM cliente"
+			);
+			while($li=mysqli_fetch_array($lista)){
+				$res[] = $li;
+			}
+
+			return $res;
+	}
 }
 
 ?>

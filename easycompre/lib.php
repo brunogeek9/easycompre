@@ -1,15 +1,16 @@
 <?php
  namespace Metodos;
+ 	//include_once();
 	function PHPAlert($msg){
 		echo '<script type="text/javascript"> alert('.$msg.');</script>';
 	}
 
 	function validarNome($nome){
 		if((strlen($nome)>8)&&($nome<40)){
-			return true;
+			return $nome;
 		}
 		else
-			return false;	
+			return NULL;	
 	}
 
 	function limparDado($objeto){
@@ -50,7 +51,7 @@
 		$telefone = str_replace(")", "", $telefone);
 		$telefone = str_replace(" ", "", $telefone);
 		if((strlen($telefone)==11)&&(is_numeric($telefone))){
-			return true;
+			return $telefone;
 		}
 		else 
 			return false;
@@ -70,7 +71,7 @@
 				$hm=$hoje[5].$hoje[6];
 				$hd=$hoje[8].$hoje[9];
 				if ($ano+18<=$ha&&($mes<=$hm)&&($dia<=$hd)) {
-					return true;
+					return $ano.'-'.$mes.'-'.$dia;
 				}
 				else 
 					{return false;}
@@ -82,16 +83,24 @@
 	}
 	function validarEmail($email){
 		if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-	 		echo "E-mail inválido.";   
+	 		//echo "E-mail inválido.";
+	 		return false;
+
 		}else{
-	 		echo "Seu e-mail e ".$email;
+	 		//echo "Seu e-mail e ".$email;
+	 		return $email;
 		}
 	}
 	function validarSenha($senha,$confirmar){
 		if(($senha==$confirmar)&&(strlen($senha)>=8)&&(strlen($senha)<=40)&&(strlen($confirmar)>=8)&&(strlen($confirmar)<=40)){
-			return true;
+			return $senha;
 		}
 		else 
 			return false;
 	}
+	
+/*if(validarSenha("zangszangs","zangszangs")){
+echo "aa";*/
+//}
+//}
 ?>
