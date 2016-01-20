@@ -2,18 +2,6 @@
 //include_once("../beans/clienteBEAN.php");
 include_once("conexao.php");
 class clienteDAO extends conexao{
-	/*public function consulta_cliente($objeto){
-		$cpf = $objeto->get_cpf();
-		$data_nascimento = $objeto->get_data_nascimento();
-		$nome_cliente = $objeto->get_nome_cliente();
-		$telefone_celular = $objeto->get_telefone_celular();
-		$telefone_residencial = $objeto->get_telefone_residencial();
-		$id_sexo = $objeto->get_id_sexo();
-		return mysql_query(
-			" select * from cliente where email='$email' and senha='$senha' "
-		);
-
-	}*/
 /*	public function alterar_dados($objeto)
 	{
 		$cpf = $objeto->get_cpf();
@@ -65,47 +53,14 @@ class clienteDAO extends conexao{
 		if ($query) { return true; }
 	}
 
-	public function incluir_cliente($cli)
-	{
-		$cpf = $objeto->get_cpf();
-		$data_nascimento = $objeto->get_data_nascimento();
-		$email = $objeto->get_email();
-		$nome_cliente = $objeto->get_nome_cliente();
-		$telefone_celular = $objeto->get_telefone_celular();
-		$telefone_residencial = $objeto->get_telefone_residencial();
-		$senha = $objeto->get_senha();
-		$id_sexo = $objeto->get_id_sexo();
-		
-		$query = mysql_query(
-			"INSERT INTO `cliente`
-			(`cpf`,
-			`data_nascimento`,
-			`email`,
-			`nome_cliente`,
-			`telefone_celular`,
-			`telefone_residencial`,
-			`senha`,
-			`id_sexo`)
-			VALUES
-			('$cpf',
-			'$data_nascimento',
-			'$email',
-			'$nome_cliente',
-			'$telefone_celular',
-			'$telefone_residencial',
-			'$senha',
-			'$id_sexo');"
-		);
-
-		if ($query) { return true; }
-	}*/
-	public function inserirCliente($cpf,$data_nascimento,$email,$nome,$telefone_celular,$telefone_residencial,$senha,$idsexo,$idendereco){
+	*/
+	public function inserirCliente($cpf,$data_nascimento,$email,$nome,$telefone_celular,$telefone_residencial,$senha,$idsexo,$idendereco,$pkNivel){
 		$sql = "insert into cliente (cpf,data_nascimento,email,nome,telefone_celular,telefone_residencial,senha,id_sexo,id_endereco) 
 		      values ('$cpf','$data_nascimento','$email','$nome_cliente','$telefone_celular','$telefone_residencial','$senha')";
 	    //$this->con->query($sql);
 		      
-	    $sql1="INSERT INTO cliente(cpf, data_nascimento, email, nome, telefone_celular, telefone_residencial, senha, id_sexo, id_endereco) 
-	    VALUES ('$cpf','$data_nascimento','$email','$nome','$telefone_celular','$telefone_residencial','$senha',$idsexo,$idendereco)";
+	    $sql1="INSERT INTO cliente(cpf, data_nascimento, email, nome, telefone_celular, telefone_residencial, senha, id_sexo, id_endereco,id_nivel) 
+	    VALUES ('$cpf','$data_nascimento','$email','$nome','$telefone_celular','$telefone_residencial','$senha',$idsexo,$idendereco,$pkNivel)";
 		$this->con->query($sql1);
 	}
 	public function consultaCliente(){
@@ -118,6 +73,23 @@ class clienteDAO extends conexao{
 
 			return $res;
 	}
+	public function inserirNivel($nome){
+		$sql="INSERT INTO nivel(nome) VALUES ('$nome')";
+		$this->con->query($sql);
+	}
+
+	public function consultaNivel($cpf){
+		$lista = $this->con->query(
+				"SELECT nivel.nome FROM nivel,cliente WHERE cliente.id_nivel = nivel.id AND cliente.cpf = '$cpf'"
+			);
+			while($li=mysqli_fetch_array($lista)){
+				$res[] = $li;
+			}
+
+			return $res;
+		
+	}
+
 }
 
 ?>

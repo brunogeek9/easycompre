@@ -1,61 +1,71 @@
 <?php
     include_once("DAOs/produtoDAO.php");
-	class Carrinho{
-	//session_start();
-	//private $_SESSION['carrinho'];
-		public function CriarCarrinho(){
-			session_start();
-			if(!isset($_SESSION['carrinho'])){
-				$_SESSION['carrinho'] = array();
-			}
-		}
+    class Carrinho{
+    //session_start();
+    //private $_SESSION['carrinho'];
+        public function CriarCarrinho(){
+            session_start();
+            if(!isset($_SESSION['carrinho'])){
+                $_SESSION['carrinho'] = array();
+            }
+        }
         
-		public function AdicionarProduto($id){
-			session_start();
-			if(!isset($_SESSION['carrinho'][$id])){
-				$_SESSION['carrinho'][$id]+=1;
-			}
-			else{
-				$_SESSION['carrinho'][$id]+=1;
-			}
+        public function AdicionarProduto($id){
+            session_start();
+            if(!isset($_SESSION['carrinho'][$id])){
+                $_SESSION['carrinho'][$id]+=1;
+            }
+            else{
+                $_SESSION['carrinho'][$id]+=1;
+            }
 
-		}
-		public function RemoverProduto($id){
-			session_start();
-			if(isset($_SESSION['carrinho'][$id])){
-				unset($_SESSION['carrinho'][$id]);
-			}
-		}
-		public function CalcularSub($id,$qtd){
-			$ob = new produtoDAO;
+        }
+        public function RemoverProduto($id){
+            session_start();
+            if(isset($_SESSION['carrinho'][$id])){
+                unset($_SESSION['carrinho'][$id]);
+            }
+        }
+        public function CalcularSub($id,$qtd){
+            $ob = new produtoDAO;
             $lin=$ob->ColsultaProduto($id);
-			return number_format($lin['preco']*$qtd, 2, ',', '.');	
-		}
-		public function MudaQTD($id){
-			
-		}
-		
-		public function TelaCarrinho(){
-			session_start();
+            return number_format($lin['preco']*$qtd, 2, ',', '.');  
+        }
+
+        public function limparCarrinho(){
+            if(isset($_SESSION['carrinho'])){
+                unset($_SESSION['carrinho']);
+            }
+        }
+
+        public function MudaQTD($id){
+            
+        }
+        
+        public function TelaCarrinho(){
+            session_start();
                 echo '<html>';
-					echo '<head>
+                    echo '<head>
                         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
                         <link href="css/carrinho.css" type="text/css" rel="stylesheet" />
                         <link href="css/style1.css" rel="stylesheet">
+                        <link rel="stylesheet" type="text/css" href="css/login.css"/>
+                        <link rel="stylesheet" type="text/css" href="css/cadastro.css"/>
                         <title>Carrinho</title>
                         <link href="http://fonts.googleapis.com/css?family=Oswald" rel="stylesheet" type="text/css">
-                        
+                        <script src ="js/jquery.js"></script>
+                        <script src="js/exibir.js"></script>
                         <script src ="js/jquery.js"></script>
                     </head>';
-				
+                
                 '<body>';
                 
-			require_once("Pedacos/menu.php");
-			//include_once ("Pedacos/cadastro.php");
-			//include_once ("Pedacos/login.php");
-			
+            require_once("Pedacos/menu.php");
+            include_once ("Pedacos/cadastro.php");
+            include_once ("Pedacos/login.php");
+            
                 echo '<table class="carrinho">
-                <caption>Carrinho de Compras</caption>
+                <caption></caption>
                 <thead>
 
                     <tr>
@@ -90,7 +100,7 @@
                 
                     //<?php
                     if(count($_SESSION['carrinho'])==0){
-						echo "<br>";
+                        echo "<br>";
                         echo "<p id='nada'>Não a produtos no carrinho</p>";
                         $total=0;
                     }
@@ -108,18 +118,18 @@
                                  <td>'.$nome.'</td>
                                  
                                  <td>
-									<form action="pagina.php?acao=alterar&id='.$id_produto.'" method="POST" id = "BotaoQTD">
-										<!--<input type="submit" name="decremento" value="-">-->
+                                    <form action="pagina.php?acao=alterar&id='.$id_produto.'" method="POST" id = "BotaoQTD">
+                                        <!--<input type="submit" name="decremento" value="-">-->
 <button type="submit" class="btn btn-primary operacao" id="soma">+</button>
   
-										'.(double)$qtd.'							
-										<!--<input type="submit" name="incremento" value="+">-->
+                                        '.(double)$qtd.'                            
+                                        <!--<input type="submit" name="incremento" value="+">-->
 <button type="submit" class="btn btn-success operacao" id="subtrai">-</button>
-									</form>
+                                    </form>
                                  </td>
                                  <td>R$ '.$preco.'</td>
                                  <td>Subtotal R$ '.$this->CalcularSub($id,$qtd).'</td>
-                                 <td><a href="pagina.php?acao=rm&id='.$id.'" id="remove">Remove</a></td>
+                                 <td><a href="paginas.php?acao=rm&id='.$id.'" id="remove">Remove</a></td>
 <br>
                               </tr>';
                         }
@@ -130,24 +140,24 @@
                     //print_r($_POST);
                     echo '<tr>
                             <td>Total : R$ '.$total.'</td>
-							<td>Frete : R$ '.$frete.'</td>
+                            <td>Frete : R$ '.$frete.'</td>
                             <td colspan=4>
-								
-							</td>
+                                
+                            </td>
                           </tr>
                           
                           <tr>
-							
+                            
                           </tr>
                           <tr>
-							<td><br>';
+                            <td><br>';
 echo '<label>CEP</label>';
-								echo "<form action='paginas.php?acao=frete' method='POST'>";
+                                echo "<form action='paginas.php?acao=frete' method='POST'>";
                                 echo '<input type="text" name="cep"/>
-								    <input type="submit" value="CalcularFrete" name="calculaFrete">
+                                    <input type="submit" value="CalcularFrete" name="calculaFrete">
                                     </form>';
 
-							echo '</td>
+                            echo '</td>
                           </tr>'
                           ;
                           
@@ -157,13 +167,9 @@ echo '<label>CEP</label>';
                     </body>
                     </html>';
 //print_r($_POST);
-		}
-	}
-
-	//submitCarrinho.php
-	//limpar carrinho
-	//fechar carrinho
-	//calcular frete
-
+        }
+    }
+    //limpar carrinho
+    //fechar carrinho
 ?>
-			
+            
