@@ -60,17 +60,16 @@
             echo '<link href="css/style1.css" rel="stylesheet">';
 			echo '<link href="http://fonts.googleapis.com/css?family=Oswald" rel="stylesheet" type="text/css">';
 			echo '<div id="telaProd">';
-                        require_once("Pedacos/menu.php");
+            require_once("Pedacos/menu.php");
 			echo '<img src="produtos/'.$k['id_produto'].'" id="imgProduto"/>';
 			echo '<p id="nomeTela">' . $k['nome'] . '</p>';
+			include_once("Pedacos/menuCategorias.php");
 			echo '<p id="precoTela"> R$' . number_format($k['preco'], 2, ',', '.') . '</p>';
 			echo '<a class="a" id="compTela" href="paginas.php?acao=add&id='.$k['id_produto'].'">Comprar</a>';
 			echo '<p id="descricao">' . $k['descricao'] . '</p>';
-			
 			echo '<div>';
 			
 		}
-		
 		public function GaleriaSubcat1(){
 			echo '<h6 style="text-indent: 3cm; color: gray;font-size:14px; font-family: Verdana, Arial;">Subcategorias Mais Vendidas</h6>';
 			echo '<ul id="screen">';
@@ -163,7 +162,7 @@ echo '<h5 style="clear:both;text-indent: 3cm; color: red;font-size:16px; font-fa
 		
 
 		public function menuCategorias(){
-			
+
 		}
 	}
 ?>

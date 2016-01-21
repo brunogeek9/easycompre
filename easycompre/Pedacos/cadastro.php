@@ -1,13 +1,13 @@
 
 <div id="cadastro" style="display: none;">
-<form class="form-horizontal" action="submitCliente.php" method="POST">
+<form class="form-horizontal" action="paginas.php?acao=cadastroCliente" method="POST">
 <br/>
   <fieldset>
 <legend class="legend">Cadastre-se</legend>
 </fieldset>
 <input type="text" name="nome" placeholder="Nome Completo:"/>
 
-<input type="text" name="cpf" placeholder="CPF"/>
+<input type="text" name="cpf" placeholder="CPF" id="cpf"/>
 
 <input type="text" name="telefone_residencial" placeholder="Telefone Residencial:"/>
 

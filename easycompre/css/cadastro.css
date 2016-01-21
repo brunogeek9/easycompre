@@ -19,9 +19,10 @@ input {
 #cadastro {
 	margin: 50px auto;
 	width: 320px;
-	background: #393937; 
+	background: #393937;
 	height: 760px;
 	position:fixed;
+	z-index:200;
 }
 
 form.
@@ -132,4 +133,8 @@ margin-left: 12px;;
 	text-transform: uppercase;
 	width: 300px;
 	
+}
+
+.anc {
+	color: #e14d4d;
 }

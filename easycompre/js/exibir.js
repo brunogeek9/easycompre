@@ -8,6 +8,18 @@ $(document).ready(function(){
     	$("#login").hide();
    	    $("#cadastro").show();
 	});
+
+    $("#conectese").click(function(){
+		$("#cadastro").hide();
+		$("#login").show();
+	});
+
+    $("#fec").click(function(){
+        $("#cadastro").hide();
+        $("#login").hide();
+    });
+    
+	
 });
 
 

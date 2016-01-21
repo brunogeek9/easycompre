@@ -3,20 +3,42 @@
 	include_once ("carrinho.php");
 	include_once("lib.php");
 	include_once("controladorSubmit.php");
+	include_once("DAOs/clienteDAO.php");
+	include_once("Control/adm.php");
 	class controladorPag{
 		public function AbrePagina(){
 					$acao=$_GET['acao'];
 					//se logado pode comprar caso n nao pode
-
+					//se logado topo1 se n topo2
+					//se nivel for administrador pode acessar as telas de administrador
 					if(isset($_GET['acao'])){
-					$id=$_GET['id'];	
+					$id=$_GET['id'];
+					if($acao=="atualizarPagamento"){
+						$status=$_GET['status'];
+						$idpedido=$_GET['idpedido'];
+						echo $status.'---'.$idpedido;
+						$adm = new adm;
+						$adm->gerenciarPedidos();
+						$adm-> atualizarPagamento($status,$idpedido);
+						
+					}
+					elseif ($acao="atualizarPedido") {
+						$status=$_GET['status'];
+						$idpedido=$_GET['idpedido'];
+						echo $status.'---'.$idpedido;
+						$adm = new adm;
+						$adm->gerenciarPedidos();
+						$adm-> atualizarPedido($status,$idpedido);		
+					}	
 					if($acao=="cadastroCliente"){
 						include_once("submitCliente.php");
 						//("easycompre.esy.es/index.php");
 						//\Metodos\confirmacao();
 					}
 					elseif($acao=="logar"){
-						include_once("Submitlogin.php");
+						include_once("submitLogin.php");
+						header("location :http://easycompre.esy.es");
+						echo "a";
 					}
 					
 			        if($acao == 'telaProd'){
@@ -73,23 +95,37 @@
 		        }
 			}
 		}
-		public function Login($email,$senha){
+		public function Login($Email,$senha){
 			$c=new clienteDAO;
-			$cli= new controladorSubmit;
+			$cli= new clienteDAO;
       		$lista=$c->consultaCliente();
+      		//var_dump($lista);
+      		$notLogged=true;
       		foreach ($lista as $cpf => $email) {
-      			if(($email['email']==$email)&&($email['senha']==$senha)){
+      			
+      			if(($email['senha']==$senha)&&($email['email']==$Email)){
+      				//echo $email['cpf'];
       				session_start();
       				$_SESSION['email']=$email['email'];
       				$_SESSION['senha']=$email['senha'];
       				$_SESSION['cpf']=$email['cpf'];
-      				$_SESSION['nivel']=$cli->consultaNivel($_SESSION['cpf']);
-      				echo $_SESSION['nivel'];
+      				$_SESSION['nome']=$email['nome'];
+      				$nivel= $cli->consultaNivel($_SESSION['cpf']);
+      				$_SESSION['nivel']=$nivel[0][0];
+      				$notLogged=false;
+      				var_dump($_SESSION);
+      				break;
+
       			}
-      			else 
-      				echo"Usuario ou senha incoretos";
+      			
+      			
       		}
-		}
+      		if($notLogged){
+      			echo"usuario ou senha invalidos";
+      			var_dump($_SESSION);
+      			header("Location: http://easycompre.esy.es");
+      		}
+      	}
 	}
 ?>
 		

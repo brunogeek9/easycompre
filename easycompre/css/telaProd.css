@@ -5,15 +5,39 @@
 }
 #precoTela{
 	font-size:23px;
-	background-color:red ;/*,#FF5500*/
+	background-color:#e14d4d;/*,#FF5500*/
 	letter-spacing:1.5px;
 	color:white;
 	font-family:'Oswald';
 	border-radius:6px;
-	width:104px;
+	width:500px;
 	text-align:center;
 	
 }
 #descricao{
-	float:left;	
+	float: left;	
+	width: 350px;
+	text-align: justify;
+
+}
+#compTela {
+	font-size:23px;
+	background-color:#e14d4d;/*,#FF5500*/
+	letter-spacing:1.5px;
+	color:white;
+	font-family:'Oswald';
+	border-radius:6px;
+	width:500px;
+	float: left;
+	text-align: center;
+	
+}
+#imgProduto {
+	float:left;
+	width: 300px;
+}
+
+#prod {
+	width: 1000px;
+	margin: auto;
 }

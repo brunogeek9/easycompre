@@ -4,7 +4,17 @@
 	function PHPAlert($msg){
 		echo '<script type="text/javascript"> alert('.$msg.');</script>';
 	}
+	function confirmacao(){
 
+		/*echo '<div class="alert alert-success fade in">
+		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		<strong>Cadastro realizado com sucesso</strong> 
+		</div>';*/
+		echo "disi";
+	}
+	function retornarData($data){
+		return date('d/m/Y', strtotime($data));
+	}
 	function validarNome($nome){
 		if((strlen($nome)>8)&&($nome<40)){
 			return $nome;

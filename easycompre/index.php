@@ -10,18 +10,17 @@
 			<link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css' />
 			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
 			<meta name = "viewport" contens="width=device-width, initial-scale = 1.0"/>
-				<!-- Bootstrap -->
-				<link href ="css/bootstrap.min.css" rel="stylesheet"/>
-				<link href="css/style1.css" rel="stylesheet"/>
-
-				<script src ="js/jquery.js"></script>
-				<script src="js/bootstrap.min.js"></script>
-				<script src="js/exibir.js"></script>
-				<link href='css/base.css' type='text/css' rel='stylesheet' />
-				<link href='css/produtos.css' type='text/css' rel='stylesheet' />
-				<link href='css/galeriaSubcat.css' type='text/css' rel='stylesheet' />
-				<script type='text/javascript' src='js/jquery.scrollTo-min.js'></script>
-				<script type='text/javascript' src='js/jquery.scrollShow-min.js'></script>
+			<link href ="css/bootstrap.min.css" rel="stylesheet"/>
+			<link href="css/style1.css" rel="stylesheet"/>
+			<!-- Javascript -->
+			<script src ="js/jquery.js"></script>
+			<script src="js/bootstrap.min.js"></script>
+			<script src="js/exibir.js"></script>
+			<link href='css/base.css' type='text/css' rel='stylesheet' />
+			<link href='css/produtos.css' type='text/css' rel='stylesheet' />
+			<link href='css/galeriaSubcat.css' type='text/css' rel='stylesheet' />
+			<script type='text/javascript' src='js/jquery.scrollTo-min.js'></script>
+			<script type='text/javascript' src='js/jquery.scrollShow-min.js'></script>
 	</head>
  	<body>
 		<?php

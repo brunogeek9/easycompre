@@ -4,6 +4,11 @@
 	margin-right:auto;	
 	
 }
+
+.hidden{
+	display:none;
+}
+
 i{
 	color:#383838;
 }
@@ -91,7 +96,7 @@ li{
 	margin:auto;
 	font-size:12px;
 	font-weight: bold;
-	color:#e14d4d;
+	color:#FF5500;
 	border-color:black;
 	font-family:'Oswald';
 	letter-spacing:2px;
@@ -176,7 +181,7 @@ header{
 	margin:auto;
 }
 #menu>li:hover{
-	color:#e14d4d;
+	color:#FF5500;
 	cursor: pointer;
 }
 #menu>li:hover .menuICO{
@@ -185,14 +190,14 @@ header{
 	
 }
 .meus-botoes{
-	background-color: #e14d4d;
+	background-color: #FF5500;
 	font-weight: bold;
 	color:black;
 }
 #titulos{
 	font-weight:bold;
 	font-family:'Oswald', sans-serif;
-	color:#e14d4d;
+	color:#FF0000;
 	font-size:16px;
 	
 }

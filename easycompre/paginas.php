@@ -1,5 +1,5 @@
 <?php
-	include ("Control/acao.php");
-	$ob= new acao();
+	include ("Control/controladorPag.php");
+	$ob= new controladorPag();
 	$ob->AbrePagina();
 ?>

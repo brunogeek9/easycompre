@@ -8,7 +8,7 @@
 	charset=utf8",$db_user,$db_senha);
 	$dog->beginTransaction();
 
-	$cod_referencia="14-14";
+	//$cod_referencia="14-14";
 	$data_pagamento=date('Y-m-d');
 	$data_pedido = date('Y-m-d');
 	$frete_pedido = 12.5;//$_POST['frete'];
@@ -17,8 +17,8 @@
 	$status_pedido = 'Pedido Realizado';
 	$cpf = '01755644428';//$_SESSION['cpf'];
 	//teste PDO
-	$dog->exec("insert into pedido (cod_referencia,data_pagamento,data_pedido,frete_pedido,previsao_entrega,status_pagamento,status_pedido,cpf) 
-	values ('$cod_referencia','$data_pagamento','$data_pedido',$frete_pedido,'$previsao_entrega','$status_pagamento','$status_pedido','$cpf')");
+	$dog->exec("insert into pedido (data_pagamento,data_pedido,frete_pedido,previsao_entrega,status_pagamento,status_pedido,cpf) 
+	values ('$data_pagamento','$data_pedido',$frete_pedido,'$previsao_entrega','$status_pagamento','$status_pedido','$cpf')");
 	$ultimoID=$dog->lastInsertId(); 	
 	foreach ($_SESSION['carrinho'] as $id=>$qtd) {
 		
@@ -26,8 +26,7 @@
 		$consulta->execute();
 		$linha=$consulta->fetch();
 		$preco_unit=$linha[0];
-		//echo $preco_unit;
-		echo $ultimo;
+		
 		$dog->exec("insert into pedido_produto (id_pedido,id_produto,preco_unit,quantidade) 
 		values ($ultimoID,$id,$preco_unit,$qtd)");
 		$dog->exec("update produto set unidades=unidades-$qtd where id_produto=$id");
@@ -39,11 +38,11 @@
 		if($numero<0){
 			echo "numero de produtos insuficiente";
 			$dog->rollBack ();
-			die();
+			die("aaaaaa");
 		}
 	}
 	
-	$cop=$dog->commit();
+	//$cop=$dog->commit();
 	
 
 	if($cop){
@@ -52,5 +51,4 @@
 
 
 	//consultar se quantidade ficou negativa
-	
 ?>
