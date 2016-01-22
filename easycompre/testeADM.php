@@ -1,5 +1,9 @@
 <?php
 	include_once("Control/adm.php");
-	$adm = new adm;
-	$adm->atualizarPedido("Entregue",5);
+	include_once("Control/controladorSubmit.php");
+	include_once("DAOs/clienteDAO.php");
+	$a=new controladorSubmit;
+	var_dump($a->consultaEmail("brunogeek9@gmail.com"));
+	$adm=new adm;
+	$adm->gerenciarNiveis();
 ?>

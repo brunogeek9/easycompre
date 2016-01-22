@@ -13,28 +13,56 @@
 					//se nivel for administrador pode acessar as telas de administrador
 					if(isset($_GET['acao'])){
 					$id=$_GET['id'];
+
+					if ($acao=="alterarNivel"){
+						$email=$_POST['emailNivel'];
+						
+						if($email){
+							echo $email;
+							$con=new controladorSubmit;
+							$adm=new adm;
+							if($con->consultaEmail($email)){
+								$adm->linhaEmail($email);
+							} 
+						}
+					}
+
+					$enviar=$_GET['enviar'];
+					if(($acao=="alterarNivel")&&($enviar=="linhaEmail")){
+						include_once("submitAN.php");
+						include_once("testeADM.php");
+					//	header("location :http://easycompre.esy.es/testeADM.php");
+
+						
+					}
+					
+
 					if($acao=="atualizarPagamento"){
 						$status=$_GET['status'];
 						$idpedido=$_GET['idpedido'];
 						echo $status.'---'.$idpedido;
 						$adm = new adm;
 						$adm->gerenciarPedidos();
-						$adm-> atualizarPagamento($status,$idpedido);
-						
+						$adm-> atualizarPagamento($status,$idpedido);	
 					}
-					elseif ($acao="atualizarPedido") {
+
+					elseif ($acao=="atualizarPedido") {
 						$status=$_GET['status'];
 						$idpedido=$_GET['idpedido'];
 						echo $status.'---'.$idpedido;
 						$adm = new adm;
 						$adm->gerenciarPedidos();
 						$adm-> atualizarPedido($status,$idpedido);		
-					}	
+					}
+
+					
+
 					if($acao=="cadastroCliente"){
 						include_once("submitCliente.php");
 						//("easycompre.esy.es/index.php");
 						//\Metodos\confirmacao();
 					}
+
 					elseif($acao=="logar"){
 						include_once("submitLogin.php");
 						header("location :http://easycompre.esy.es");

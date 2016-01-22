@@ -1,6 +1,8 @@
 <?php
 	include_once("lib.php");
 	include_once("DAOs/pedidoDAO.php");
+	include_once("DAOs/clienteDAO.php");
+	include_once("controladorSubmit.php");
 	class adm{
 		public function telaADM(){
 			echo '<!DOCTYPE html>
@@ -150,6 +152,57 @@
 		}
 
 		public function gerenciarNiveis(){
+			echo '<form action="paginas.php?acao=alterarNivel" method="POST">
+					<input type="text" name="emailNivel">
+					<input type="submit" name="envNivel">
+				</form>';
+		}
+
+		public function linhaEmail($e){
+			$cli = new clienteDAO;
+			$linha=$cli->consultaCliente();
+			echo '<!DOCTYPE html>
+			<html lang="en">
+			<head>
+			  <title>Nivel Clientes</title>
+			  <meta charset="utf-8">
+			  <meta name="viewport" content="width=device-width, initial-scale=1">
+			  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+			  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+			  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+			</head>
+			<body>
+
+			<div class="container">           
+			  <table class="table">';
+			      $num= count($linha);
+				for ($i=0; $i < $num; $i++) {
+				if($linha[$i]['email']==$e){ 
+				    echo  '<tr>';
+				        echo '<td>'.$linha[$i]['cpf'].'</td>';
+				        echo '<td>'.$linha[$i]['data_nascimento'].'</td>';
+				        echo '<td>'.$linha[$i]['email'].'</td>';
+				        echo '<td>'.$linha[$i]['nome'].'</td>';
+				        echo '<td>'.$linha[$i]['telefone_celular'].'</td>';
+				        echo '<td>'.$linha[$i]['senha'].'</td>';
+				        echo '<td rowspan="2">';
+				        echo '<form action="paginas.php?acao=alterarNivel&enviar=linhaEmail&email='.$linha[$i]['email'].'" method="POST">';
+					        echo '<select size="1" name="nivel">
+									<option selected value="">Nivel</option>
+									<option value="1">1</option>
+									<option value="2">2</option>
+								</select>';
+								echo '<input type="submit" name="Alterar"/>';
+						echo '</form>';
+				        echo '</td>';
+				    echo '</tr>';
+			    	}
+				}
+			  echo '</table>
+			</div>
+
+			</body>
+			</html>';
 
 		}
 
