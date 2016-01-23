@@ -24,8 +24,13 @@
 	</head>
  	<body>
 		<?php
+			
+    	
 			include_once("Pedacos/cadastro.php");
-			require_once("Pedacos/menu.php");
+			include_once("Control/controladorCategorias.php");
+			//insereMenu();
+			$cat = new controladorCat;
+			$cat->insereMenu();
 			include_once("Pedacos/login.php");
 		?>	
  		<div id="loja">
@@ -46,6 +51,7 @@
 					$ob->GerarLista();	
 								
 				?>
+
 				<?php
 					include ("Control/carrinho.php");
 					$cat=new Carrinho;
@@ -56,7 +62,7 @@
 			<div id="departamentos">
 			<fieldset>
 				<?php
-					$ob = new controladorProdutos;
+					//$ob = new controladorProdutos;
 					$ob->GaleriaSubcat1();
 					//$ob->GaleriaSubcat2();
 					//$ob1=new controladorProdutos();
