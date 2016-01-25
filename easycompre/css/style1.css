@@ -59,7 +59,8 @@ body{
 }
 /*pegando seletores que tem propriedades parecidas*/
 #departamentos #sobre #produtos{
-	height:170px;
+	height:200px;
+	width: 150px;
 }
 #menu>li{
 		text-decoration: none;
@@ -94,9 +95,10 @@ li{
 #contato{
 	width:350px;
 	margin:auto;
+	text-align: center;
 	font-size:12px;
 	font-weight: bold;
-	color:#FF5500;
+	color:#383838;
 	border-color:black;
 	font-family:'Oswald';
 	letter-spacing:2px;
@@ -120,20 +122,21 @@ li{
 #g{
 	height:38px;
 	width:38px;
-	float:right;
-	margin-right:43px;
-	//margin-bottom:20px;
+	float:left;
+	margin: auto;
+	margin-right:50px;
+	//margin-bottom:10px;	
 }
 #face{
 	height:38px;
 	width:38px;
-	float:right;
+	margin-right: 50px;
 }
 #tw{
 	height:38px;
 	width:38px;
 	float:right;
-	margin-right:43px;
+	margin-right:50px;
 }
 
 
@@ -181,7 +184,7 @@ header{
 	margin:auto;
 }
 #menu>li:hover{
-	color:#FF5500;
+	color:#e14d4d;
 	cursor: pointer;
 }
 #menu>li:hover .menuICO{
@@ -190,14 +193,19 @@ header{
 	
 }
 .meus-botoes{
-	background-color: #FF5500;
+	background-color: #e14d4d;
 	font-weight: bold;
 	color:black;
 }
 #titulos{
 	font-weight:bold;
 	font-family:'Oswald', sans-serif;
-	color:#FF0000;
+	color: #e14d4d;
 	font-size:16px;
 	
+}
+.subcategoriaMaisVendida {
+	float: left;
+	padding: 25px;
+	margin: auto;
 }

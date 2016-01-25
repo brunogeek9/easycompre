@@ -36,4 +36,32 @@ tr, td {
 h2 {
 	background-color: #e14d4d;
 }
+table{
+	width: 100%;
+	border: 0;
+}
+td{
+	border-left-style:none;
+	border-right-style:none;
+	border-bottom-style:inset;
+	border-left-style:none;
+	border-bottom-color:#e14d4d;
+	border-bottom-width: medium; 
+	text-align: center;
+}
+tr{
+	border-left-style:none;
+	border-right-style:none;
+	border-bottom-style:inset ;
+	border-left-style:none;
+	border-bottom-color:#e14d4d;
+	border-bottom-width: medium;
+	text-align: center;
+}
+#root{
+	width: 800px;
+	height: 600px;
+	padding-right: auto;
+	padding-left: auto;
+}
 
