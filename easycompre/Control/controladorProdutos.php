@@ -2,6 +2,8 @@
 	include_once ("DAOs/produtoDAO.php");
 	include_once("DAOs/subcategoriaDAO.php");
 	include_once("DAOs/categoriaDAO.php");
+	include_once("lib.php");
+	include_once("Control/controladorPag.php");
 	class controladorProdutos{
 		public function Listador($objeto){
 			while($li=$objeto){
@@ -55,15 +57,40 @@
 		public function GerarTela($id){
 			$ob = new produtoDAO();
 			$k=$ob->ColsultaProduto($id);
+			//echo '<title>'.´$k['nome'].'</title>';
 			echo '<meta charset="utf-8">';
+			echo '<head>';
 			echo '<link rel="stylesheet" type="text/css" href="css/telaProd.css">';
             echo '<link href="css/style1.css" rel="stylesheet">';
 			echo '<link href="http://fonts.googleapis.com/css?family=Oswald" rel="stylesheet" type="text/css">';
+			echo '<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>';
+			echo '<script type="text/javascript" src="https://sites.google.com/site/seututorial/seututorial/smoothmenu.js"></script>';
+			echo '<link rel="stylesheet" type="text/css" href="css/menuCategorias.css">';
+			echo "<script type='text/javascript'>
+    })
+	</script>
+	<script type='text/javascript'>
+	    ddsmoothmenu.init({
+
+	        mainmenuid: 'smoothmenu2',
+	        //Menu DIV id
+	        orientation: 'v',
+	        //Horizontal ou vertical menu: 'h' ou 'v'
+	        classname: 'ddsmoothmenu-v',
+	        //class added to menu's outer DIV
+
+	        //customtheme: ['#804000', '#482400'],
+	        contentsource: 'markup' //'markup' or ['container_id', 'path_to_menu_file']
+	    })
+	</script>";
+			echo '</head>';
 			echo '<div id="telaProd">';
-            require_once("Pedacos/menu.php");
+			include_once("Control/controladorCategorias.php");
+			$cat = new controladorCat;
+            $cat->insereMenu();
 			echo '<img src="produtos/'.$k['id_produto'].'" id="imgProduto"/>';
 			echo '<p id="nomeTela">' . $k['nome'] . '</p>';
-			include_once("Pedacos/menuCategorias.php");
+			//include_once("Pedacos/menuCategorias.php");
 			echo '<p id="precoTela"> R$' . number_format($k['preco'], 2, ',', '.') . '</p>';
 			echo '<a class="a" id="compTela" href="paginas.php?acao=add&id='.$k['id_produto'].'">Comprar</a>';
 			echo '<p id="descricao">' . $k['descricao'] . '</p>';
@@ -87,7 +114,7 @@
 			foreach ($prod as $id=>$nome){
 echo '<div class="subcategoriaMaisVendida">';			
 echo '<h5 style="clear:both;text-indent: 3cm; color: red;font-size:16px; font-family: Verdana, Arial;">'.$nome.'</h5>';
-				$n=$ob1->ListaProdutoSub($id);
+				//$n=$ob1->ListaProdutoSub($id);
 				$num1=count($n);
 				for($i=0;$i<$num1;$i++){
 					echo '<li id="'.$i.'">';
